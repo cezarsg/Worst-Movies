@@ -1,21 +1,29 @@
 package br.com.golden.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "movies")
 public class Movie {
 	
+    @Id
+    @GeneratedValue
+    private int id;
+    
 	private int year;
 	private String title;
 	private String studios;
 	private String producers;
-	private String winner;
+	private boolean winner;
 	
 	public Movie() {
 		
 	}
 	
-	public Movie(int year, String title, String studios, String producers, String winner) {
+	public Movie(int year, String title, String studios, String producers, boolean winner) {
 		super();
 		this.year = year;
 		this.title = title;
@@ -40,7 +48,7 @@ public class Movie {
 		return producers;
 	}
 	
-	public String getWinner() {
+	public boolean isWinner() {
 		return winner;
 	}
 

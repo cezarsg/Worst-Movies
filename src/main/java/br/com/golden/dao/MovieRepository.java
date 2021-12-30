@@ -6,9 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import br.com.golden.model.Movie;
 
-
 @Repository
-@Component("producerRepository")
-public interface ProducerRepository extends JpaRepository<Movie, Long> {
+@Component("movieRepository")
+public interface MovieRepository extends JpaRepository<Movie, Long>{
 
 }

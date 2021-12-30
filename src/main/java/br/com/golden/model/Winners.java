@@ -7,6 +7,11 @@ public class Winners {
 	private List<WinnerProducer> min = new ArrayList<>();
 	private List<WinnerProducer> max = new ArrayList<>();	
 	
+	public Winners(List<WinnerProducer> max, List<WinnerProducer> min) {
+		this.min = min;
+		this.max = max;
+	}
+
 	public List<WinnerProducer> getMin() {
 		return min;
 	}	
