@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang.SerializationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,8 +34,8 @@ public class ProducerService implements IProducerService {
 		Map<String, List<Movie>> moviesByProducer = groupByProducers(listMovies);
 		
 		List<PairMovies> listPairMovies = createPairMovies(moviesByProducer);
-
-		Winners winners = new Winners(retrieveMax(listPairMovies), retrieveMin(listPairMovies));
+		List<PairMovies> listPairMoviesSec = (List<PairMovies>)SerializationUtils.clone(new ArrayList(listPairMovies));
+		Winners winners = new Winners(retrieveMax(listPairMovies), retrieveMin(listPairMoviesSec));
 		
 		return winners;	
 	}
@@ -78,11 +79,12 @@ public class ProducerService implements IProducerService {
 	private List<WinnerProducer> retrieveMax(List<PairMovies> listPairMovies) {
 		
 		List<WinnerProducer> winners = new ArrayList<>();
-		 
-		// Get Min or Max Object
-		PairMovies first = listPairMovies.stream().max(comparator).get();
-		listPairMovies.remove(first);
-		winners.add(createWinnerProducer(first));
+		
+		if (!listPairMovies.isEmpty()) {
+			PairMovies first = listPairMovies.stream().max(comparator).get();
+			listPairMovies.remove(first);
+			winners.add(createWinnerProducer(first));
+		}
 		
 		if (!listPairMovies.isEmpty()) {
 			PairMovies second = listPairMovies.stream().max(comparator).get();		
@@ -115,7 +117,6 @@ public class ProducerService implements IProducerService {
 			    			pair = new PairMovies(next, first);
 			    		}
 			    		
-			    		System.out.println(pair);
 			    		if (!movieComb.contains(pair)) {
 					    	movieComb.add(pair);
 			    		}

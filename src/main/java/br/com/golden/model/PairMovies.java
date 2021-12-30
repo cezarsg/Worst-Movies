@@ -1,6 +1,9 @@
 package br.com.golden.model;
 
-public class PairMovies {
+import java.io.Serializable;
+
+public class PairMovies implements Serializable {
+	private static final long serialVersionUID = 5772945561047958025L;
 	private Movie first;
 	private Movie next;
 	private int interval;

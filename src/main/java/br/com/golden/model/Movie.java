@@ -1,5 +1,7 @@
 package br.com.golden.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,9 +9,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "movies")
-public class Movie {
+public class Movie implements Serializable {
 	
-    @Id
+	private static final long serialVersionUID = 42095004773576063L;
+
+	@Id
     @GeneratedValue
     private int id;
     
