@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.golden</groupId>
-	<artifactId>Worst-Moviess</artifactId>
+	<artifactId>Worst-Movies</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Pior-Filmes</name>
+	<name>Worst-Movies</name>
 	<description>Desenvolva uma API RESTful para possibilitar a leitura da lista de indicados e vencedores da categoria Pior Filme do Golden Raspberry Awards.</description>
 	<properties>
 		<java.version>1.8</java.version>
