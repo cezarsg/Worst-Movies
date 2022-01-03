@@ -25,6 +25,7 @@ public class MovieService implements IMovieService {
 
 	@Override
 	public void upload(InputStream inputStream) {
+		movieRepository.deleteAll();
 		List<Record> records = CSVParserUtil.toRecords(inputStream);
 		List<Movie> movies = CSVParserUtil.toMovies(records);
 		

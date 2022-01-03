@@ -106,8 +106,7 @@ public class ProducerService implements IProducerService {
 		    }
 		    
 		    for (Movie first : movies) {
-			    for (Movie next : movies) {
-			    	count++;
+			    for (Movie next : movies) {			    	
 			    	if (!first.getTitle().contentEquals(next.getTitle())) {
 		    			PairMovies pair = null;
 
@@ -118,6 +117,7 @@ public class ProducerService implements IProducerService {
 			    		}
 			    		
 			    		if (!movieComb.contains(pair)) {
+			    			count++;
 					    	movieComb.add(pair);
 			    		}
 			    	}
